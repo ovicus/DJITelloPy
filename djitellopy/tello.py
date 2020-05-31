@@ -477,7 +477,7 @@ class Tello:
 
     def raise_result_error(self, command: str, response: any) -> bool:
         raise Exception('Command {} was unsuccessful. Message: {}'.format(command, response))
-
+    
     def connect(self):
         """Entry SDK mode
         Returns:
@@ -929,7 +929,7 @@ class BackgroundFrameRead:
         self.stopped = False
 
     def start(self):
-        Thread(target=self.update_frame, args=()).start()
+        Thread(target=self.update_frame, args=(), daemon=True).start()
         return self
 
     def update_frame(self):
